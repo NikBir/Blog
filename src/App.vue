@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h1>Blog application</h1>
-    <BlogReg/>
+    <BlogReg v-if="regFlag"/>
+    <BlogLoginTo v-else/>
     <AddBlogItem/>
     <hr>
     <BlogList
@@ -14,6 +15,7 @@
 <script>
 import BlogList from '@/components/BlogList'
 import BlogReg from '@/components/BlogReg'
+import BlogLoginTo from '@/components/BlogLoginTo'
 import AddBlogItem from '@/components/AddBlogItem'
 export default {
   name: 'app',
@@ -23,7 +25,8 @@ export default {
         {id: 1, title: "Текст блога 1", completed: false},
         {id: 2, title: "Текст блога 2", completed: false},
         {id: 3, title: "Текст блога 3", completed: false}
-      ]
+      ],
+      regFlag: true
     }
   },
   methods: {
@@ -34,6 +37,7 @@ export default {
   components: { // регистрация новый модулей *.vue
     BlogList,
     BlogReg,
+    BlogLoginTo,
     AddBlogItem
   }
 }
