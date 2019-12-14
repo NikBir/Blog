@@ -81,7 +81,7 @@ hr {
   &:hover {
     cursor: pointer;
     background-color: #fff;
-    box-shadow: 0 0 7px rgb(77, 247, 26),
+    box-shadow: 0 0 10px rgb(77, 247, 26),
                 0 0 0 1px rgb(77, 247, 26) inset;
   }
   span {

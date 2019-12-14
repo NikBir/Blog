@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="div-container-list">
         <ul>
             <BlogItem
                 v-for="blogItem of blogs"
@@ -31,5 +31,9 @@ export default {
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+    .div-container-list {
+        width: 50%;
+        margin: 0 auto;
     }
 </style>

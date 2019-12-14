@@ -1,15 +1,34 @@
 <template>
-    <form v-if="showModal">
-        <input type="text">
-        <button type="submit">Create</button>
-    </form>
+    <div id="div-modal" class="div-modal" 
+         v-if="showModal"
+    >
+        <div class="modal-wrapper">
+            <div class="modal-container">
+                <form>
+                    <textarea id="textarea-modal"></textarea>
+                    <div class="div-btn-modal">
+                        <button 
+                            class="btn-cancel-modal"
+                            v-on:click='showModal = closeModal'
+                        >Cancel</button>
+                        <button 
+                            class="btn-create-modal"
+                            type="submit"
+                            v-on:click='showModal = closeModal'
+                        >Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
     data () {
         return {
-            showModal: false
+            showModal: false,
+            closeModal: false
         }
     },
     methods: {
@@ -24,7 +43,71 @@ export default {
 </script>
 
 <style lang="scss">
-    form {
+    .div-modal {
+        position: fixed;
+        z-index: 9998;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba( #000000, .5);
+        display: table;
+        transition: opasity .3s ease;
+    }
+    .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .modal-container {
+        width: 300px;
+        margin: 0px auto;
+        padding: 20px 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 9px rgba(#000, .33);
+        transition: all .3s ease;
+    }
+    .div-btn-modal {
         display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+    .btn-create-modal,
+    .btn-cancel-modal {
+        outline: none;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1.05rem;
+        border: none;
+        padding: 5px 10px;
+        &:hover {
+            background: #fff;
+            cursor: pointer;
+        }
+    }
+    .btn-create-modal {
+        margin-left: 6px;
+        background: rgb(55, 209, 8);
+        &:hover {
+            background: #fff;
+            color: rgb(55, 209, 8);
+            box-shadow: 0 0 0 1px rgb(55, 209, 8) inset, 0 0 5px rgb(77, 247, 26);
+            cursor: pointer;
+            text-shadow: none;
+        }
+    }
+    .btn-cancel-modal {
+        margin-right: 6px;
+        background: rgb(250, 25, 25);
+        &:hover {
+            background: #fff;
+            color: rgb(250, 25, 25);
+            box-shadow: 0 0 0 1px rgb(250, 25, 25) inset, 0 0 5px rgba(250, 25, 25, .5);
+            cursor: pointer;
+        }
+    }
+    .textarea-modal {
+        
     }
 </style>
