@@ -5,6 +5,7 @@
                 v-for="blogItem of blogs"
                 v-bind:blogItem="blogItem"
                 v-on:remove-item="removeItem"
+                :key='blogItem.blogs'
             />
         </ul>
     </div>
