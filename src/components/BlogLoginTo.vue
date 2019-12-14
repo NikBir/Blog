@@ -45,6 +45,7 @@ export default {
     justify-content: center;
     align-items: center;
     .btn-signout {
+        outline: none;
         display: inline-block;
         height: 100%;
         border-radius: 5px;
@@ -53,6 +54,12 @@ export default {
         padding: 0 20px;
         font-weight: 500;
         font-size: 1.1rem;
+        &:hover {
+            cursor: pointer;
+            background: #444;
+            color: #fff;
+            box-shadow: 0 0 7px rgba(#444, $alpha: .5);
+        }
     }
 }
 </style>
