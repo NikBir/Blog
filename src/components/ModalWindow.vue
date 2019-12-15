@@ -51,6 +51,7 @@ export default {
                 }
 
                 this.$emit('add-blog', newBlog)
+                this.text = ''
             }
         },
         handler() {

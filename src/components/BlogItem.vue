@@ -2,7 +2,7 @@
     <li>
         <div class="div-item">
             <span>
-                <strong>{{ blogItem.id }}</strong>
+                <strong>{{ index }}</strong>
                 {{ blogItem.title }}
             </span>
             <hr>
@@ -22,7 +22,8 @@ export default {
         blogItem: {
             type: Object,
             required: true
-        }
+        },
+        index: Number
     }
 }
 </script>

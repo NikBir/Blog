@@ -2,8 +2,9 @@
     <div class="div-container-list">
         <ul>
             <BlogItem
-                v-for="blogItem of blogs"
+                v-for="(blogItem, i) of blogs"
                 v-bind:blogItem="blogItem"
+                v-bind:index="i"
                 v-on:remove-item="removeItem"
                 :key='blogItem.blogs'
             />
@@ -19,6 +20,9 @@ export default {
         BlogItem
     },
     methods: {
+        addItems() {
+            
+        },
         removeItem(id) {
             this.$emit('remove-item', id)
         }

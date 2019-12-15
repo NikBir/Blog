@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import DataBlog from '@/data/data-blog.json'
 import BlogList from '@/components/BlogList'
 import BlogReg from '@/components/BlogReg'
 import BlogLoginTo from '@/components/BlogLoginTo'
@@ -29,14 +30,18 @@ export default {
   name: 'app',
   data() {
     return {
-      blogs: [
-        {id: 1, title: "Текст блога 1", completed: false},
-        {id: 2, title: "Текст блога 2", completed: false},
-        {id: 3, title: "Текст блога 3", completed: false}
-      ],
+      blogs: [],
       regFlag: false,
-      showModal: true
+      showModal: true,
+      DataBlog
     }
+  },
+  created() {
+    
+  },
+  mounted() {
+    console.log(this.DataBlog)
+    this.blogs = this.DataBlog
   },
   methods: {
     removeItem(id) {
