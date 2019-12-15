@@ -8,6 +8,7 @@
                     <textarea 
                         id="textarea-modal"
                         v-on:keydown="textareaHeight"
+                        v-model="text"
                     ></textarea>
                 </div>
                 <div class="div-btn-modal">
@@ -17,7 +18,7 @@
                     >Cancel</button>
                     <button 
                         class="btn-create-modal"
-                        v-on:click='showModal = closeModal; onSubmit'
+                        @click="handler"
                     >Create</button>
                 </div>
             </div>
@@ -30,7 +31,8 @@ export default {
     data () {
         return {
             showModal: false,
-            closeModal: false
+            closeModal: false,
+            text: ''
         }
     },
     methods: {
@@ -42,7 +44,18 @@ export default {
             e.target.style.height = e.target.scrollHeight + 'px'
         },
         onSubmit() {
-            console.log('Submit')
+            if (this.text.trim()) {
+                const newBlog = {
+                    id: Date.now(),
+                    title: this.text
+                }
+
+                this.$emit('add-blog', newBlog)
+            }
+        },
+        handler() {
+            this.showModal = this.closeModal
+            this.onSubmit()
         }
     },
     created: function() {

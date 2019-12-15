@@ -14,7 +14,9 @@
       <span>Create</span>
       <img src="./icons/createIcon.svg" alt="">
     </button>
-    <ModalWindow/>
+    <ModalWindow
+      @add-blog='addBlog'
+    />
   </div>
 </template>
 
@@ -42,6 +44,9 @@ export default {
     },
     click: function() {
       this.$emit('show', this.showModal)
+    },
+    addBlog(blog) {
+      this.blogs.push(blog)
     }
   },
   components: { // регистрация новый модулей *.vue
