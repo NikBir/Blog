@@ -2,23 +2,30 @@
     <li>
         <div class="div-item">
             <span>
-                <strong>{{ index }}</strong>
                 {{ blogItem.title }}
             </span>
             <hr v-if="!checkLogin">
             <div class="div-btn"
                 v-if="!checkLogin"
             >
-                <button class="btn-edit">Edit</button>
+                <button class="btn-edit"
+                        @click="show"
+                >Edit</button>
                 <button class="btn-remove" 
                         v-on:click="$emit('remove-item', blogItem.id)"
                 >Delete</button>
             </div>
         </div>
+        <ModalCheageBlog
+            v-if="showEdit"
+            @closeEdit="closeEdit"
+            @edit-blog="editBlog"
+        />
     </li>
 </template>
 
 <script>
+import ModalCheageBlog from '@/components/ModalCheageBlog'
 export default {
     props: {
         checkLogin: Boolean,
@@ -27,6 +34,27 @@ export default {
             required: true
         },
         index: Number
+    },
+    data() {
+        return {
+            showEdit: false
+        }
+    },
+    methods: {
+        show() {
+            this.showEdit = true
+            this.$emit('text', this.blogItem.title)
+        },
+        closeEdit() {
+            this.showEdit = false
+        },
+        editBlog(value) {
+            this.showEdit = false
+            this.blogItem.title = value.title
+        }
+    },
+    components: {
+        ModalCheageBlog
     }
 }
 </script>
