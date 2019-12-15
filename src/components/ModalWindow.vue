@@ -5,7 +5,12 @@
         <div class="modal-wrapper">
             <div class="modal-container">
                 <form>
-                    <textarea id="textarea-modal"></textarea>
+                    <div class="div-textarea">
+                        <textarea 
+                            id="textarea-modal"
+                            v-on:keydown="textareaHeight"
+                        ></textarea>
+                    </div>
                     <div class="div-btn-modal">
                         <button 
                             class="btn-cancel-modal"
@@ -34,6 +39,10 @@ export default {
     methods: {
         setValue: function(value) {
             this.showModal = value
+        },
+        textareaHeight: function(e) {
+            e.target.style.height = 'auto'
+            e.target.style.height = e.target.scrollHeight + 'px'
         }
     },
     created: function() {
@@ -59,7 +68,7 @@ export default {
         vertical-align: middle;
     }
     .modal-container {
-        width: 300px;
+        width: 35%;
         margin: 0px auto;
         padding: 20px 20px;
         background-color: #fff;
@@ -107,7 +116,12 @@ export default {
             cursor: pointer;
         }
     }
-    .textarea-modal {
-        
+    #textarea-modal {
+        outline: none;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #555;
+        resize: none; 
+        overflow: hidden;
     }
 </style>
