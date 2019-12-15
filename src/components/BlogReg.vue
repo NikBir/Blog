@@ -19,7 +19,10 @@
             @click="checkLogin"
         >Sign in</button>
         <span>/</span>
-        <button class="btn-signup">Sign up</button>
+        <button 
+            class="btn-signup"
+            @click="$emit('checkReg')"
+        >Sign up</button>
       </div>
     </div>
 </template>

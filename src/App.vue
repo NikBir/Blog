@@ -5,6 +5,7 @@
       v-if="regFlag"
       @loginTo="loginTo"
       @nameLogin="nameLogin"
+      @checkReg='checkReg'
     />
     <BlogLoginTo 
       v-else
@@ -29,6 +30,11 @@
     <ModalWindow
       @add-blog='addBlog'
     />
+    <ModalReg
+      v-if="signUp"
+      @dereg="dereg"
+      @okReg="okReg"
+    />
   </div>
 </template>
 
@@ -38,12 +44,14 @@ import BlogList from '@/components/BlogList'
 import BlogReg from '@/components/BlogReg'
 import BlogLoginTo from '@/components/BlogLoginTo'
 import ModalWindow from '@/components/ModalWindow'
+import ModalReg from '@/components/ModalReg'
 export default {
   name: 'app',
   data() {
     return {
       blogs: [],
       regFlag: true,
+      signUp: false,
       showModal: true,
       DataBlog
     }
@@ -72,13 +80,25 @@ export default {
     },
     checkExit(data) {
       this.regFlag = data
+    },
+    checkReg() {
+      this.signUp = true
+    },
+    dereg() {
+      this.signUp = false
+    },
+    okReg(login, pass) {
+      this.signUp = false
+      this.Name = login
+      this.regFlag = false
     }
   },
   components: { // регистрация новый модулей *.vue
     BlogList,
     BlogReg,
     BlogLoginTo,
-    ModalWindow
+    ModalWindow,
+    ModalReg
   }
 }
 </script>
