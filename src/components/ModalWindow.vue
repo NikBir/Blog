@@ -4,25 +4,22 @@
     >
         <div class="modal-wrapper">
             <div class="modal-container">
-                <form>
-                    <div class="div-textarea">
-                        <textarea 
-                            id="textarea-modal"
-                            v-on:keydown="textareaHeight"
-                        ></textarea>
-                    </div>
-                    <div class="div-btn-modal">
-                        <button 
-                            class="btn-cancel-modal"
-                            v-on:click='showModal = closeModal'
-                        >Cancel</button>
-                        <button 
-                            class="btn-create-modal"
-                            type="submit"
-                            v-on:click='showModal = closeModal'
-                        >Create</button>
-                    </div>
-                </form>
+                <div class="div-textarea">
+                    <textarea 
+                        id="textarea-modal"
+                        v-on:keydown="textareaHeight"
+                    ></textarea>
+                </div>
+                <div class="div-btn-modal">
+                    <button 
+                        class="btn-cancel-modal"
+                        v-on:click='showModal = closeModal'
+                    >Cancel</button>
+                    <button 
+                        class="btn-create-modal"
+                        v-on:click='showModal = closeModal; onSubmit'
+                    >Create</button>
+                </div>
             </div>
         </div>
     </div>
@@ -43,6 +40,9 @@ export default {
         textareaHeight: function(e) {
             e.target.style.height = 'auto'
             e.target.style.height = e.target.scrollHeight + 'px'
+        },
+        onSubmit() {
+            console.log('Submit')
         }
     },
     created: function() {
