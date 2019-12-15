@@ -1,11 +1,23 @@
 <template>
     <div class="container">
       <div class="div-inputs">
-        <input placeholder="Login" type="text" name="login" id="input-login">
-        <input placeholder="Password" type="password" name="password" id="input-password">
+        <input
+            v-model="Name" 
+            placeholder="Login" 
+            type="text" name="login" 
+            id="input-login">
+        <input
+            v-model="Password" 
+            placeholder="Password" 
+            type="password" 
+            name="password" 
+            id="input-password">
       </div>
       <div class="div-btn">
-        <button class="btn-signin">Sign in</button>
+        <button 
+            class="btn-signin"
+            @click="checkLogin"
+        >Sign in</button>
         <span>/</span>
         <button class="btn-signup">Sign up</button>
       </div>
@@ -14,6 +26,28 @@
 
 <script>
 export default {
+    data() {
+        return {
+            Name: '',
+            Password: ''
+        }
+    },
+    mounted() {
+
+    },
+    methods: {
+        checkLogin() {
+            let user = require('@/data/data-user.json')
+            if (this.Name !== '' && this.Password !== '') {
+                for (let i = 0; i < user.length; i++) {
+                    if (user[i].name === this.Name && user[i].password === this.Password) {
+                        this.$emit('loginTo')
+                        this.$emit('nameLogin', this.Name)
+                    }
+                }
+            }
+        }
+    }
 }
 </script>
 

@@ -1,21 +1,20 @@
 <template>
     <div class="container">
         <div class="div-welcome">
-            <p>Welcome, {{ login }}</p>
+            <p>Welcome, {{ nameLogin }}</p>
         </div> 
         <div class="div-btn">
-            <button class="btn-signout">Sign out</button>
+            <button 
+                class="btn-signout"
+                @click="$emit('checkExit', true)"
+            >Sign out</button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    data () {
-        return {
-            login: 'Name'
-        }
-    }
+    props: ['nameLogin']
 }
 </script>
 

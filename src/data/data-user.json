@@ -1,4 +1,10 @@
 [
-    {"Name": "Key"},
-    {"Nikolay": "123"}
+    {
+        "name": "Nikolay",
+        "password": "123"
+    },
+    {
+        "name": "admin",
+        "password": "admin"
+    }
 ]
