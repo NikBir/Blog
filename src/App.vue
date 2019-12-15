@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <h1>Blog application</h1>
-    <BlogReg v-if="regFlag"/>
+    <BlogReg 
+      v-if="regFlag"/>
     <BlogLoginTo v-else/>
     <hr>
     <BlogList
       v-if="blogs.length !== 0"
       v-bind:blogs="blogs"
+      v-bind:checkLogin="this.regFlag"
       @remove-item="removeItem"
     />
     <span
@@ -26,6 +28,7 @@
 
 <script>
 import DataBlog from '@/data/data-blog.json'
+import DataUser from '@/data/data-user.json'
 import BlogList from '@/components/BlogList'
 import BlogReg from '@/components/BlogReg'
 import BlogLoginTo from '@/components/BlogLoginTo'
@@ -35,17 +38,17 @@ export default {
   data() {
     return {
       blogs: [],
-      regFlag: false,
+      regFlag: true,
       showModal: true,
-      DataBlog
+      DataBlog,
+      DataUser
     }
   },
   created() {
-    
+    this.blogs = this.DataBlog
   },
   mounted() {
-    console.log(this.DataBlog)
-    this.blogs = this.DataBlog
+    
   },
   methods: {
     removeItem(id) {
@@ -56,6 +59,9 @@ export default {
     },
     addBlog(blog) {
       this.blogs.push(blog)
+    },
+    login() {
+      this.blogs.length !== 0
     }
   },
   components: { // регистрация новый модулей *.vue
@@ -81,7 +87,7 @@ hr {
 }
 .btn-create-blog {
   outline: none;
-  position: absolute;
+  position: fixed;
   right: 30px;
   bottom: 30px;
   display: flex;

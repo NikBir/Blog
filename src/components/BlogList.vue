@@ -4,6 +4,7 @@
             <BlogItem
                 v-for="(blogItem, i) of blogs"
                 v-bind:blogItem="blogItem"
+                v-bind:checkLogin="checkLogin"
                 v-bind:index="i"
                 v-on:remove-item="removeItem"
                 :key='blogItem.blogs'
@@ -15,7 +16,7 @@
 <script>
 import BlogItem from '@/components/BlogItem'
 export default {
-    props: ['blogs'],
+    props: ['blogs', 'checkLogin'],
     components: {
         BlogItem
     },

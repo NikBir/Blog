@@ -5,8 +5,10 @@
                 <strong>{{ index }}</strong>
                 {{ blogItem.title }}
             </span>
-            <hr>
-            <div class="div-btn">
+            <hr v-if="!checkLogin">
+            <div class="div-btn"
+                v-if="!checkLogin"
+            >
                 <button class="btn-edit">Edit</button>
                 <button class="btn-remove" 
                         v-on:click="$emit('remove-item', blogItem.id)"
@@ -19,6 +21,7 @@
 <script>
 export default {
     props: {
+        checkLogin: Boolean,
         blogItem: {
             type: Object,
             required: true
