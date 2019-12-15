@@ -5,9 +5,13 @@
     <BlogLoginTo v-else/>
     <hr>
     <BlogList
+      v-if="blogs.length !== 0"
       v-bind:blogs="blogs"
       @remove-item="removeItem"
     />
+    <span
+      v-else-if="blogs.length === 0"
+    >There are no posts yes</span>
     <button class="btn-create-blog"
             v-if="regFlag != true"
             v-on:click='click'>
