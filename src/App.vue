@@ -3,6 +3,7 @@
     <h1>Blog application</h1>
     <BlogReg 
       v-if="regFlag"
+      v-bind:users="DataUser"
       @loginTo="loginTo"
       @nameLogin="nameLogin"
       @checkReg='checkReg'
@@ -40,6 +41,7 @@
 
 <script>
 import DataBlog from '@/data/data-blog.json'
+import DataUser from '@/data/data-user.json'
 import BlogList from '@/components/BlogList'
 import BlogReg from '@/components/BlogReg'
 import BlogLoginTo from '@/components/BlogLoginTo'
@@ -53,7 +55,8 @@ export default {
       regFlag: true,
       signUp: false,
       showModal: true,
-      DataBlog
+      DataBlog,
+      DataUser
     }
   },
   created() {
@@ -90,6 +93,12 @@ export default {
     okReg(login, pass) {
       this.signUp = false
       this.Name = login
+      let obj = {
+        table: []
+      }
+      obj.table = this.DataUser
+      obj.table.push({name: login, password: pass})
+      this.DataUser = obj.table
       this.regFlag = false
     }
   },

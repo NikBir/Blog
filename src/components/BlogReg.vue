@@ -29,6 +29,7 @@
 
 <script>
 export default {
+    props: ['users'],
     data() {
         return {
             Name: '',
@@ -40,10 +41,10 @@ export default {
     },
     methods: {
         checkLogin() {
-            let user = require('@/data/data-user.json')
+            console.log(this.users)
             if (this.Name !== '' && this.Password !== '') {
-                for (let i = 0; i < user.length; i++) {
-                    if (user[i].name === this.Name && user[i].password === this.Password) {
+                for (let i = 0; i < this.users.length; i++) {
+                    if (this.users[i].name === this.Name && this.users[i].password === this.Password) {
                         this.$emit('loginTo')
                         this.$emit('nameLogin', this.Name)
                     }

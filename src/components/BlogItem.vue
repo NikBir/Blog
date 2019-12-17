@@ -1,9 +1,11 @@
 <template>
     <li>
         <div class="div-item">
-            <span>
-                {{ blogItem.title }}
-            </span>
+            <div class="div-text-title">
+                <span>
+                    {{ blogItem.title }}
+                </span>
+            </div>
             <hr v-if="!checkLogin">
             <div class="div-btn"
                 v-if="!checkLogin"
@@ -74,6 +76,11 @@ export default {
         hr {
             margin: 5px;
         }
+    }
+    .div-text-title {
+        display: flex;
+        padding: 20px 0;
+        text-align: start;
     }
     .div-btn {
         margin: 0;
